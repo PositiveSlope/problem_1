@@ -1,34 +1,32 @@
 #include <list>
-
+#define MAX_SIZE 100
 // n: size of the problem
 // result: a list of string, each string represents a case of valid parentheses of size n
-void _possibleParenthesis(int n, int open, int close, std::list<std::string> & result)
+void _possibleParenthesis(int pos, int n, int open, int close, std::list<std::string> & result)
 {
+    static char str[MAX_SIZE];
     if(open==n && close == n) {
+        result.emplace_back(str);//replaced printf to output into vector
         return;
     }else {
 
         if (open > close) {
-
-            _possibleParenthesis(n, open, close + 1, result);
-            result.emplace_back("{");
-            return;//w/o return, I would get size 7 for n=2, and size 21 for n=3
+            str[pos] = '}';
+            _possibleParenthesis(pos+1, n, open, close + 1, result);
         }
 
-        if (open < n) {//adding else if gave me the best result
-
-            _possibleParenthesis(n, open + 1, close, result);
-            result.emplace_back("}");//when debugging, it looked like my code left its recursion function, it went to the line before
-            return;
-        }//so i moved emplaceback after the call and switched { and }
+        if (open < n) {
+            str[pos] = '{';
+            _possibleParenthesis(pos+1, n, open + 1, close, result);
+        }
     }
-}//i drew out the state flows and when they drew things, but i couldnt figure out why it branched the way it did
+}
 
 void possibleParenthesis(int n, std::list<std::string> & result)
 {
     // homework
     if(n>0){
-        _possibleParenthesis(n,0,0,result);
+        _possibleParenthesis(0,n,0,0,result);
     }
 
 
