@@ -28,6 +28,9 @@ void possibleParenthesis(int n, std::list<std::string> & result)
     if(n>0){
         _possibleParenthesis(0,n,0,0,result);
     }
-
-
 }
+//I traced debug to follow an FSM
+//where (n, int open, int close) is as follows
+//2,0,0->2,1,0->2,1,1->2,2,1->2,2,2->return/exit back to 2,2,1->return back to 2,1,1
+//return back to 2,1,0 where (open < n), so open+1 ->2,2,0 -> (open>close) ->2,2,1 -> again to 2,2,2
+//wanted to include this as a comment
