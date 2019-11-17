@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/mclovin/Desktop/homework5/problem_1/possible_parentheses/test/main.cpp
-gtest/gtest.h
-/home/mclovin/Desktop/homework5/problem_1/possible_parentheses/test/gtest/gtest.h
-
 /home/mclovin/Desktop/homework5/problem_1/possible_parentheses/test/unit_tests.cpp
 gtest/gtest.h
 /home/mclovin/Desktop/homework5/problem_1/possible_parentheses/test/gtest/gtest.h
